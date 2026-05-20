@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="003-insert-data-centros-acopio" author="fabian">
+        <!-- Centro Acopio 1: Centro Principal -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Principal"/>
+            <column name="direccion" value="Av. Libertador Bernardo O'Higgins 1500"/>
+            <column name="comuna" value="Santiago"/>
+            <column name="capacidad_maxima" value="5000"/>
+            <column name="responsable" value="Jefe Logística Centro"/>
+            <column name="telefono" value="+56 2 2345 6789"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-01"/>
+        </insert>
+
+        <!-- Centro Acopio 2: Zona Sur -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Zona Sur"/>
+            <column name="direccion" value="Calle Las Condes 300, Puente Alto"/>
+            <column name="comuna" value="Puente Alto"/>
+            <column name="capacidad_maxima" value="3000"/>
+            <column name="responsable" value="Carlos Meneses"/>
+            <column name="telefono" value="+56 2 2888 7654"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-05"/>
+        </insert>
+
+        <!-- Centro Acopio 3: Zona Norte -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Zona Norte"/>
+            <column name="direccion" value="Av. Mapocho 2000, Independencia"/>
+            <column name="comuna" value="Independencia"/>
+            <column name="capacidad_maxima" value="2500"/>
+            <column name="responsable" value="Patricia Vega"/>
+            <column name="telefono" value="+56 2 2976 5432"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-08"/>
+        </insert>
+
+        <!-- Centro Acopio 4: Periferia Este -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Periferia Este"/>
+            <column name="direccion" value="Calle Oriente 500, La Pintana"/>
+            <column name="comuna" value="La Pintana"/>
+            <column name="capacidad_maxima" value="2000"/>
+            <column name="responsable" value="Jorge Rodríguez"/>
+            <column name="telefono" value="+56 2 2801 2345"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-10"/>
+        </insert>
+
+        <!-- Centro Acopio 5: Periferia Oeste -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Periferia Oeste"/>
+            <column name="direccion" value="Av. Poniente 800, Cerro Navia"/>
+            <column name="comuna" value="Cerro Navia"/>
+            <column name="capacidad_maxima" value="2200"/>
+            <column name="responsable" value="Mariana Silva"/>
+            <column name="telefono" value="+56 2 2732 4567"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-12"/>
+        </insert>
+
+        <!-- Centro Acopio 6: Rural Sur -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Rural Sur"/>
+            <column name="direccion" value="Camino Rural Km 25, Melipilla"/>
+            <column name="comuna" value="Melipilla"/>
+            <column name="capacidad_maxima" value="1500"/>
+            <column name="responsable" value="Francisco Mora"/>
+            <column name="telefono" value="+56 2 2842 3456"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-14"/>
+        </insert>
+
+        <!-- Centro Acopio 7: Zona Oriente -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Ñuñoa"/>
+            <column name="direccion" value="Av. Presidente Riesco 3000, Ñuñoa"/>
+            <column name="comuna" value="Ñuñoa"/>
+            <column name="capacidad_maxima" value="2800"/>
+            <column name="responsable" value="Daniela Torres"/>
+            <column name="telefono" value="+56 2 2481 5678"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-16"/>
+        </insert>
+
+        <!-- Centro Acopio 8: San Bernardo -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio San Bernardo"/>
+            <column name="direccion" value="Calle Arturo Prat 1200, San Bernardo"/>
+            <column name="comuna" value="San Bernardo"/>
+            <column name="capacidad_maxima" value="2400"/>
+            <column name="responsable" value="Andrés Flores"/>
+            <column name="telefono" value="+56 2 2663 4321"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-18"/>
+        </insert>
+
+        <!-- Centro Acopio 9: Almacén Temporal (Inactivo) -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Almacén Temporal"/>
+            <column name="direccion" value="Bodega Industrial Lote 5, Renca"/>
+            <column name="comuna" value="Renca"/>
+            <column name="capacidad_maxima" value="1000"/>
+            <column name="responsable" value="Roberto Gutiérrez"/>
+            <column name="telefono" value="+56 2 2645 7890"/>
+            <column name="activo" value="false"/>
+            <column name="fecha_creacion" valueDate="2024-11-15"/>
+        </insert>
+
+        <!-- Centro Acopio 10: Backup Central -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Backup Central"/>
+            <column name="direccion" value="Edificio Logística Calle 7 #150, San Miguel"/>
+            <column name="comuna" value="San Miguel"/>
+            <column name="capacidad_maxima" value="3500"/>
+            <column name="responsable" value="Lorena Páez"/>
+            <column name="telefono" value="+56 2 2581 9876"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-01"/>
+        </insert>
+
+        <!-- Centro Acopio 11: Distribución Sur Oeste -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Distribución SO"/>
+            <column name="direccion" value="Av. Santa Rosa 4500, El Bosque"/>
+            <column name="comuna" value="El Bosque"/>
+            <column name="capacidad_maxima" value="1800"/>
+            <column name="responsable" value="Víctor Bravo"/>
+            <column name="telefono" value="+56 2 2701 2468"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-20"/>
+        </insert>
+
+        <!-- Centro Acopio 12: Peñaflor Rural -->
+        <insert tableName="centros_acopio">
+            <column name="nombre" value="Centro Acopio Peñaflor"/>
+            <column name="direccion" value="Camino a Peñaflor Km 35, Peñaflor"/>
+            <column name="comuna" value="Peñaflor"/>
+            <column name="capacidad_maxima" value="1400"/>
+            <column name="responsable" value="Mónica Salazar"/>
+            <column name="telefono" value="+56 2 2857 3210"/>
+            <column name="activo" value="true"/>
+            <column name="fecha_creacion" valueDate="2024-12-22"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
