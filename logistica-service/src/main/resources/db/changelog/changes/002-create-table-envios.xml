@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="002-create-table-envios" author="fabian">
+        <createTable tableName="envios">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="donacion_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="necesidad_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="centro_acopio_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="destino" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="transporte" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="estado" type="VARCHAR(50)"><constraints nullable="false"/></column>
+            <column name="observaciones" type="VARCHAR(500)"/>
+            <column name="fecha_planificacion" type="DATETIME"/>
+            <column name="fecha_salida" type="DATETIME"/>
+            <column name="fecha_entrega" type="DATETIME"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="envios" baseColumnNames="centro_acopio_id" referencedTableName="centros_acopio" referencedColumnNames="id" constraintName="fk_envios_centros_acopio"/>
+    </changeSet>
+</databaseChangeLog>
