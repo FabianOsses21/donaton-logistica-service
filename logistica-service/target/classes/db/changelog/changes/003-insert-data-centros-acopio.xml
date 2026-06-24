@@ -13,7 +13,7 @@
             <column name="capacidad_maxima" value="5000"/>
             <column name="responsable" value="Jefe Logística Centro"/>
             <column name="telefono" value="+56 2 2345 6789"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-01"/>
         </insert>
 
@@ -25,7 +25,7 @@
             <column name="capacidad_maxima" value="3000"/>
             <column name="responsable" value="Carlos Meneses"/>
             <column name="telefono" value="+56 2 2888 7654"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-05"/>
         </insert>
 
@@ -37,7 +37,7 @@
             <column name="capacidad_maxima" value="2500"/>
             <column name="responsable" value="Patricia Vega"/>
             <column name="telefono" value="+56 2 2976 5432"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-08"/>
         </insert>
 
@@ -49,7 +49,7 @@
             <column name="capacidad_maxima" value="2000"/>
             <column name="responsable" value="Jorge Rodríguez"/>
             <column name="telefono" value="+56 2 2801 2345"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-10"/>
         </insert>
 
@@ -61,7 +61,7 @@
             <column name="capacidad_maxima" value="2200"/>
             <column name="responsable" value="Mariana Silva"/>
             <column name="telefono" value="+56 2 2732 4567"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-12"/>
         </insert>
 
@@ -73,7 +73,7 @@
             <column name="capacidad_maxima" value="1500"/>
             <column name="responsable" value="Francisco Mora"/>
             <column name="telefono" value="+56 2 2842 3456"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-14"/>
         </insert>
 
@@ -85,7 +85,7 @@
             <column name="capacidad_maxima" value="2800"/>
             <column name="responsable" value="Daniela Torres"/>
             <column name="telefono" value="+56 2 2481 5678"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-16"/>
         </insert>
 
@@ -97,7 +97,7 @@
             <column name="capacidad_maxima" value="2400"/>
             <column name="responsable" value="Andrés Flores"/>
             <column name="telefono" value="+56 2 2663 4321"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-18"/>
         </insert>
 
@@ -109,7 +109,7 @@
             <column name="capacidad_maxima" value="1000"/>
             <column name="responsable" value="Roberto Gutiérrez"/>
             <column name="telefono" value="+56 2 2645 7890"/>
-            <column name="activo" value="false"/>
+            <column name="activo" valueBoolean="false"/>
             <column name="fecha_creacion" valueDate="2024-11-15"/>
         </insert>
 
@@ -121,7 +121,7 @@
             <column name="capacidad_maxima" value="3500"/>
             <column name="responsable" value="Lorena Páez"/>
             <column name="telefono" value="+56 2 2581 9876"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-01"/>
         </insert>
 
@@ -133,7 +133,7 @@
             <column name="capacidad_maxima" value="1800"/>
             <column name="responsable" value="Víctor Bravo"/>
             <column name="telefono" value="+56 2 2701 2468"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-20"/>
         </insert>
 
@@ -145,7 +145,7 @@
             <column name="capacidad_maxima" value="1400"/>
             <column name="responsable" value="Mónica Salazar"/>
             <column name="telefono" value="+56 2 2857 3210"/>
-            <column name="activo" value="true"/>
+            <column name="activo" valueBoolean="true"/>
             <column name="fecha_creacion" valueDate="2024-12-22"/>
         </insert>
     </changeSet>
