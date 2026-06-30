@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnvioController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">logistica-service</a> &gt; <a href="index.source.html" class="el_package">com.donaton.logistica.controller</a> &gt; <span class="el_source">EnvioController.java</span></div><h1>EnvioController.java</h1><pre class="source lang-java linenums">package com.donaton.logistica.controller;
+
+import com.donaton.logistica.dto.request.EnvioRequestDTO;
+import com.donaton.logistica.dto.response.EnvioResponseDTO;
+import com.donaton.logistica.enums.EstadoEnvio;
+import com.donaton.logistica.service.EnvioService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/v1/logistica/envios&quot;)
+@RequiredArgsConstructor
+@CrossOrigin(origins = &quot;*&quot;)
+public class EnvioController {
+    private final EnvioService envioService;
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;EnvioResponseDTO&gt;&gt; listar() {
+<span class="nc" id="L23">        return ResponseEntity.ok(envioService.listar());</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;EnvioResponseDTO&gt; buscarPorId(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L28">        return ResponseEntity.ok(envioService.buscarPorId(id));</span>
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;EnvioResponseDTO&gt; guardar(@Valid @RequestBody EnvioRequestDTO dto) {
+<span class="nc" id="L33">        return ResponseEntity.status(HttpStatus.CREATED).body(envioService.guardar(dto));</span>
+    }
+
+    @PatchMapping(&quot;/{id}/estado/{estado}&quot;)
+    public ResponseEntity&lt;EnvioResponseDTO&gt; cambiarEstado(@PathVariable(&quot;id&quot;) Long id, @PathVariable(&quot;estado&quot;) EstadoEnvio estado) {
+<span class="nc" id="L38">        return ResponseEntity.ok(envioService.cambiarEstado(id, estado));</span>
+    }
+
+    @GetMapping(&quot;/estado/{estado}&quot;)
+    public ResponseEntity&lt;List&lt;EnvioResponseDTO&gt;&gt; buscarPorEstado(@PathVariable(&quot;estado&quot;) EstadoEnvio estado) {
+<span class="nc" id="L43">        return ResponseEntity.ok(envioService.buscarPorEstado(estado));</span>
+    }
+
+    @GetMapping(&quot;/donacion/{donacionId}&quot;)
+    public ResponseEntity&lt;List&lt;EnvioResponseDTO&gt;&gt; buscarPorDonacion(@PathVariable(&quot;donacionId&quot;) Long donacionId) {
+<span class="nc" id="L48">        return ResponseEntity.ok(envioService.buscarPorDonacion(donacionId));</span>
+    }
+
+    @GetMapping(&quot;/necesidad/{necesidadId}&quot;)
+    public ResponseEntity&lt;List&lt;EnvioResponseDTO&gt;&gt; buscarPorNecesidad(@PathVariable(&quot;necesidadId&quot;) Long necesidadId) {
+<span class="nc" id="L53">        return ResponseEntity.ok(envioService.buscarPorNecesidad(necesidadId));</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; eliminar(@PathVariable(&quot;id&quot;) Long id) {
+<span class="nc" id="L58">        envioService.eliminar(id);</span>
+<span class="nc" id="L59">        return ResponseEntity.noContent().build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

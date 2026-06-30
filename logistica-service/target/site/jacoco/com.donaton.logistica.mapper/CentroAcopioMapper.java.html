@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CentroAcopioMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">logistica-service</a> &gt; <a href="index.source.html" class="el_package">com.donaton.logistica.mapper</a> &gt; <span class="el_source">CentroAcopioMapper.java</span></div><h1>CentroAcopioMapper.java</h1><pre class="source lang-java linenums">package com.donaton.logistica.mapper;
+
+import com.donaton.logistica.dto.request.CentroAcopioRequestDTO;
+import com.donaton.logistica.dto.response.CentroAcopioResponseDTO;
+import com.donaton.logistica.model.CentroAcopio;
+
+public class CentroAcopioMapper {
+    private CentroAcopioMapper() {}
+
+    public static CentroAcopio toEntity(CentroAcopioRequestDTO dto) {
+<span class="fc" id="L11">        return CentroAcopio.builder()</span>
+<span class="fc" id="L12">                .nombre(dto.getNombre())</span>
+<span class="fc" id="L13">                .direccion(dto.getDireccion())</span>
+<span class="fc" id="L14">                .comuna(dto.getComuna())</span>
+<span class="fc" id="L15">                .capacidadMaxima(dto.getCapacidadMaxima())</span>
+<span class="fc" id="L16">                .responsable(dto.getResponsable())</span>
+<span class="fc" id="L17">                .telefono(dto.getTelefono())</span>
+<span class="fc" id="L18">                .build();</span>
+    }
+
+    public static CentroAcopioResponseDTO toResponseDTO(CentroAcopio centro) {
+<span class="fc" id="L22">        return CentroAcopioResponseDTO.builder()</span>
+<span class="fc" id="L23">                .id(centro.getId())</span>
+<span class="fc" id="L24">                .nombre(centro.getNombre())</span>
+<span class="fc" id="L25">                .direccion(centro.getDireccion())</span>
+<span class="fc" id="L26">                .comuna(centro.getComuna())</span>
+<span class="fc" id="L27">                .capacidadMaxima(centro.getCapacidadMaxima())</span>
+<span class="fc" id="L28">                .responsable(centro.getResponsable())</span>
+<span class="fc" id="L29">                .telefono(centro.getTelefono())</span>
+<span class="fc" id="L30">                .activo(centro.getActivo())</span>
+<span class="fc" id="L31">                .fechaCreacion(centro.getFechaCreacion())</span>
+<span class="fc" id="L32">                .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

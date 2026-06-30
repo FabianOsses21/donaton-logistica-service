@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnvioService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">logistica-service</a> &gt; <a href="index.source.html" class="el_package">com.donaton.logistica.service</a> &gt; <span class="el_source">EnvioService.java</span></div><h1>EnvioService.java</h1><pre class="source lang-java linenums">package com.donaton.logistica.service;
+
+import com.donaton.logistica.client.DonacionClient;
+import com.donaton.logistica.client.NecesidadClient;
+import com.donaton.logistica.dto.request.EnvioRequestDTO;
+import com.donaton.logistica.dto.response.EnvioResponseDTO;
+import com.donaton.logistica.enums.EstadoEnvio;
+import com.donaton.logistica.mapper.EnvioMapper;
+import com.donaton.logistica.model.Envio;
+import com.donaton.logistica.repository.EnvioRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class EnvioService {
+    private final EnvioRepository envioRepository;
+    private final CentroAcopioService centroAcopioService;
+    private final DonacionClient donacionClient;
+    private final NecesidadClient necesidadClient;
+
+    public List&lt;EnvioResponseDTO&gt; listar() {
+<span class="fc" id="L25">        return envioRepository.findAll().stream().map(EnvioMapper::toResponseDTO).toList();</span>
+    }
+
+    public EnvioResponseDTO buscarPorId(Long id) {
+<span class="fc" id="L29">        return EnvioMapper.toResponseDTO(obtenerEntidadPorId(id));</span>
+    }
+
+    public EnvioResponseDTO guardar(EnvioRequestDTO dto) {
+<span class="fc" id="L33">        centroAcopioService.obtenerEntidadPorId(dto.getCentroAcopioId());</span>
+<span class="fc" id="L34">        donacionClient.validarDonacionExiste(dto.getDonacionId());</span>
+<span class="fc" id="L35">        necesidadClient.validarNecesidadExiste(dto.getNecesidadId());</span>
+
+<span class="fc" id="L37">        Envio envio = EnvioMapper.toEntity(dto);</span>
+<span class="fc" id="L38">        envio.setEstado(EstadoEnvio.PLANIFICADO);</span>
+<span class="fc" id="L39">        envio.setFechaPlanificacion(LocalDateTime.now());</span>
+<span class="fc" id="L40">        Envio envioGuardado = envioRepository.save(envio);</span>
+
+<span class="fc" id="L42">        donacionClient.cambiarEstadoDonacion(dto.getDonacionId(), &quot;ASIGNADA&quot;);</span>
+<span class="fc" id="L43">        necesidadClient.cambiarEstadoNecesidad(dto.getNecesidadId(), &quot;EN_PROCESO&quot;);</span>
+
+<span class="fc" id="L45">        return EnvioMapper.toResponseDTO(envioGuardado);</span>
+    }
+
+    public EnvioResponseDTO cambiarEstado(Long id, EstadoEnvio estado) {
+<span class="fc" id="L49">        Envio envio = obtenerEntidadPorId(id);</span>
+<span class="fc" id="L50">        envio.setEstado(estado);</span>
+
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">        if (estado == EstadoEnvio.EN_TRANSITO &amp;&amp; envio.getFechaSalida() == null) {</span>
+<span class="fc" id="L53">            envio.setFechaSalida(LocalDateTime.now());</span>
+<span class="fc" id="L54">            donacionClient.cambiarEstadoDonacion(envio.getDonacionId(), &quot;ENVIADA&quot;);</span>
+        }
+
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">        if (estado == EstadoEnvio.ENTREGADO &amp;&amp; envio.getFechaEntrega() == null) {</span>
+<span class="fc" id="L58">            envio.setFechaEntrega(LocalDateTime.now());</span>
+<span class="fc" id="L59">            donacionClient.cambiarEstadoDonacion(envio.getDonacionId(), &quot;ENTREGADA&quot;);</span>
+<span class="fc" id="L60">            necesidadClient.cambiarEstadoNecesidad(envio.getNecesidadId(), &quot;CUBIERTA&quot;);</span>
+        }
+
+<span class="fc" id="L63">        return EnvioMapper.toResponseDTO(envioRepository.save(envio));</span>
+    }
+
+    public List&lt;EnvioResponseDTO&gt; buscarPorEstado(EstadoEnvio estado) {
+<span class="fc" id="L67">        return envioRepository.findByEstado(estado).stream().map(EnvioMapper::toResponseDTO).toList();</span>
+    }
+
+    public List&lt;EnvioResponseDTO&gt; buscarPorDonacion(Long donacionId) {
+<span class="fc" id="L71">        return envioRepository.findByDonacionId(donacionId).stream().map(EnvioMapper::toResponseDTO).toList();</span>
+    }
+
+    public List&lt;EnvioResponseDTO&gt; buscarPorNecesidad(Long necesidadId) {
+<span class="fc" id="L75">        return envioRepository.findByNecesidadId(necesidadId).stream().map(EnvioMapper::toResponseDTO).toList();</span>
+    }
+
+    public void eliminar(Long id) {
+<span class="fc" id="L79">        Envio envio = obtenerEntidadPorId(id);</span>
+<span class="fc" id="L80">        envioRepository.delete(envio);</span>
+<span class="fc" id="L81">    }</span>
+
+    private Envio obtenerEntidadPorId(Long id) {
+<span class="fc" id="L84">        return envioRepository.findById(id).orElseThrow(() -&gt; new RuntimeException(&quot;Envio no encontrado&quot;));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
