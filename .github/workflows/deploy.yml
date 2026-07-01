@@ -24,9 +24,9 @@ jobs:
           java-version: 21
           cache: maven
 
-      - name: Ejecutar pruebas unitarias
+      - name: Ejecutar pruebas unitarias y generar JAR
         working-directory: logistica-service
-        run: mvn clean test
+        run: mvn clean package
 
       - name: Construir imagen Docker
         working-directory: logistica-service
