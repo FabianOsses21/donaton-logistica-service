@@ -2,13 +2,14 @@ package com.donaton.logistica.client;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 @Component
 @RequiredArgsConstructor
 public class DonacionClient {
-    private final RestClient.Builder restClientBuilder;
+    private final @LoadBalanced RestClient.Builder restClientBuilder;
 
     @Value("${donaciones.service.url}")
     private String donacionesServiceUrl;
