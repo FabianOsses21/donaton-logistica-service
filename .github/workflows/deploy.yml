@@ -1,0 +1,33 @@
+name: CI/CD Logistica Service
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Ejecutar pruebas unitarias
+        working-directory: logistica-service
+        run: mvn clean test
+
+      - name: Construir imagen Docker
+        working-directory: logistica-service
+        run: docker build -t logistica-service:latest .
